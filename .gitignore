@@ -1,0 +1,9 @@
+client_secrets.json/
+credentials_module.json
+settings.yaml/
+data/
+venv/
+standalone_admin_password.txt
+webserver_config.py
+.env
+__pycache__/

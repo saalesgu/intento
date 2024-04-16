@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  sleek-airflow:
+    image: etlworkshop02:latest
+    volumes:
+      - ./airflow:/opt/airflow
+      - ./transformation:/opt/airflow/transformation
+      - ./src/data_process:/opt/airflow/src/data_process
+      - ./src/database:/opt/airflow/src/database
+      - ./src/models:/opt/airflow/src/models
+
+
+    ports:
+      - "8080:8080"
+    command: airflow standalone
+  
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: '131004'
+      POSTGRES_DB: Workshop-2
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+    - "5432:5432"
